@@ -1,0 +1,74 @@
+using System;
+
+
+
+namespace Laba9
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            static double F()
+            {
+                double x = int.Parse(Console.ReadLine());
+                Random rnd = new Random();
+                int a = rnd.Next(-50, 50);
+                Console.WriteLine(a);
+                double f;
+                if (x >= 0 && x > a)
+                {
+                    throw new ArgumentException("под конрнем отрицательное число :(");
+
+
+
+                }
+                if (x == a)
+                {
+                    throw new DivideByZeroException("на ноль делить нельзя");
+                }
+                double b;
+                b = Math.Sin((1 / (x - a) + 4));
+                if (x >= 0)
+                {
+                    f = (a * x) / (Math.Sqrt(Math.Pow(a, 2) - Math.Pow(x, 2)));
+                }
+                else
+                {
+                    f = x + Math.Pow(b, 2);
+                }
+                Console.WriteLine(f);
+                return f;
+            };
+            try
+            {
+                F();
+
+
+
+            }
+            catch (DivideByZeroException e)
+            {
+                Console.WriteLine("Деление на ноль");
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine("Отрицательное число под знаком корня");
+            }
+            catch (FormatException e)
+            {
+                Console.WriteLine("Это не число");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Непонятная ошибка");
+            }
+
+
+
+            finally
+            {
+                Console.WriteLine("THE END");
+            }
+        }
+    }
+}
