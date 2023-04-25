@@ -1,0 +1,58 @@
+using System;
+
+
+
+namespace Laba9
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // создаем массив
+            double[] arr = { 1.2, 2.4, 3.6, 4.8, 5.0, 6.2, 7.4, 8.6, 9.8, 10.0 };
+
+            // принимаем индексы k1 и k2 от пользователя
+            Console.Write("Введите индекс k1: ");
+            int k1 = int.Parse(Console.ReadLine());
+            Console.Write("Введите индекс k2: ");
+            int k2 = int.Parse(Console.ReadLine());
+
+            // проверяем, что k1 и k2 находятся в пределах массива
+            if (k1 < 0 || k2 >= arr.Length || k1 > k2)
+            {
+                Console.WriteLine("Некорректные значения индексов!");
+                return;
+            }
+
+            // запрашиваем ввод элементов от пользователя
+            for (int i = k1; i <= k2; i++)
+            {
+                Console.Write($"Введите элемент массива arr[{i}]: ");
+                arr[i] = double.Parse(Console.ReadLine());
+            }
+
+            // выводим массив на экран
+            Console.WriteLine("Массив после изменений:");
+            foreach (double elem in arr)
+            {
+                Console.Write(elem + " ");
+            }
+            double[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            int k11 = 2;
+            int k22 = 7;
+
+            FillRandomNumbers(array, k11, k22);
+
+            Console.WriteLine(string.Join(", ", array));
+        }
+        static void FillRandomNumbers(double[] array, int k1, int k2)
+        {
+            Random random = new Random();
+
+            for (int i = k1; i <= k2; i++)
+            {
+                array[i] = random.NextDouble() * 100;
+            }
+        }
+    }
+}
